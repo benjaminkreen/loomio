@@ -3,7 +3,7 @@ class CommentsController < BaseController
   load_resource only: [:like]
 
   def destroy
-    CommentDeleter.new(@comment).delete_comment
+    DiscussionService.delete_comment(comment: @comment, actor: current_user)
     flash[:notice] = t(:"notice.comment_deleted")
     redirect_to discussion_url(@comment.discussion)
   end

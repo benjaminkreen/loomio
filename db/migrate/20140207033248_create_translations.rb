@@ -10,7 +10,7 @@ class CreateTranslations < ActiveRecord::Migration
   		t.timestamps
   	end
     
-    execute "CREATE INDEX translations_gin_fields ON translations USING GIN(fields)"
+    execute "CREATE INDEX IF NOT EXISTS translations_gin_fields ON translations USING GIN(fields)"
   
   end
   
